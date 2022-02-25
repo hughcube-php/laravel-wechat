@@ -1,54 +1,48 @@
-<h1 align="center"> laravel captcha code </h1>
+<h1 align="center"> laravel wechat </h1>
 
 <p>
-    <a href="https://github.com/hughcube-php/laravel-captcha-code/actions?query=workflow%3ATest">
-        <img src="https://github.com/hughcube-php/laravel-captcha-code/workflows/Test/badge.svg" alt="Test Actions status">
+    <a href="https://github.com/hughcube-php/laravel-wechat/actions?query=workflow%3ATest">
+        <img src="https://github.com/hughcube-php/laravel-wechat/workflows/Test/badge.svg" alt="Test Actions status">
     </a>
-    <a href="https://github.com/hughcube-php/laravel-captcha-code/actions?query=workflow%3ALint">
-        <img src="https://github.com/hughcube-php/laravel-captcha-code/workflows/Lint/badge.svg" alt="Lint Actions status">
+    <a href="https://github.com/hughcube-php/laravel-wechat/actions?query=workflow%3ALint">
+        <img src="https://github.com/hughcube-php/laravel-wechat/workflows/Lint/badge.svg" alt="Lint Actions status">
     </a>
-    <a href="https://styleci.io/repos/217659566">
-        <img src="https://github.styleci.io/repos/217659566/shield?branch=master" alt="StyleCI">
+    <a href="https://styleci.io/repos/360221493">
+        <img src="https://github.styleci.io/repos/360221493/shield?branch=master" alt="StyleCI">
     </a>
-    <a href="https://scrutinizer-ci.com/g/hughcube-php/laravel-captcha-code/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/hughcube-php/laravel-captcha-code/badges/coverage.png?b=master" alt="Code Coverage">
+    <a href="https://scrutinizer-ci.com/g/hughcube-php/laravel-wechat/?branch=master">
+        <img src="https://scrutinizer-ci.com/g/hughcube-php/laravel-wechat/badges/coverage.png?b=master" alt="Code Coverage">
     </a>
-    <a href="https://scrutinizer-ci.com/g/hughcube-php/laravel-captcha-code/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/hughcube-php/laravel-captcha-code/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality">
+    <a href="https://scrutinizer-ci.com/g/hughcube-php/laravel-wechat/?branch=master">
+        <img src="https://scrutinizer-ci.com/g/hughcube-php/laravel-wechat/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality">
     </a> 
-    <a href="https://scrutinizer-ci.com/g/hughcube-php/laravel-captcha-code/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/hughcube-php/laravel-captcha-code/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status">
+    <a href="https://scrutinizer-ci.com/g/hughcube-php/laravel-wechat/?branch=master">
+        <img src="https://scrutinizer-ci.com/g/hughcube-php/laravel-wechat/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status">
     </a>        
-    <a href="https://github.com/hughcube-php/laravel-captcha-code">
+    <a href="https://github.com/hughcube-php/laravel-wechat">
         <img src="https://img.shields.io/badge/php-%3E%3D%207.0-8892BF.svg" alt="PHP Versions Supported">
     </a>
-    <a href="https://packagist.org/packages/hughcube/laravel-captcha-code">
-        <img src="https://poser.pugx.org/hughcube-php/laravel-captcha-code/version" alt="Latest Stable Version">
+    <a href="https://packagist.org/packages/hughcube/laravel-wechat">
+        <img src="https://poser.pugx.org/hughcube-php/laravel-wechat/version" alt="Latest Stable Version">
     </a>
-    <a href="https://packagist.org/packages/hughcube/laravel-captcha-code">
-        <img src="https://poser.pugx.org/hughcube-php/laravel-captcha-code/downloads" alt="Total Downloads">
+    <a href="https://packagist.org/packages/hughcube/laravel-wechat">
+        <img src="https://poser.pugx.org/hughcube-php/laravel-wechat/downloads" alt="Total Downloads">
     </a>
-    <a href="https://github.com/hughcube-php/laravel-captcha-code/blob/master/LICENSE">
+    <a href="https://github.com/hughcube-php/laravel-wechat/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-428f7e.svg" alt="License">
     </a>
-    <a href="https://packagist.org/packages/hughcube/laravel-captcha-code">
-        <img src="https://poser.pugx.org/hughcube-php/laravel-captcha-code/v/unstable" alt="Latest Unstable Version">
+    <a href="https://packagist.org/packages/hughcube/laravel-wechat">
+        <img src="https://poser.pugx.org/hughcube-php/laravel-wechat/v/unstable" alt="Latest Unstable Version">
     </a>
-    <a href="https://packagist.org/packages/hughcube/laravel-captcha-code">
-        <img src="https://poser.pugx.org/hughcube-php/laravel-captcha-code/composerlock" alt="composer.lock available">
+    <a href="https://packagist.org/packages/hughcube/laravel-wechat">
+        <img src="https://poser.pugx.org/hughcube-php/laravel-wechat/composerlock" alt="composer.lock available">
     </a>
 </p>
 
 ## Installing
 
 ```shell
-$ composer require hughcube/laravel-captcha-code -vvv
-```
-
-## Configuration
-
-```shell
-$ php artisan vendor:publish --provider="HughCube\Laravel\CaptchaCode\ServiceProvider"
+$ composer require hughcube/laravel-wechat -vvv
 ```
 
 ## Usage

@@ -6,11 +6,15 @@
  * Time: 11:36 下午.
  */
 
-namespace HughCube\Laravel\Package\Tests;
+namespace HughCube\Laravel\WeChat\Tests;
 
-use HughCube\Laravel\Package\Package;
-use HughCube\Laravel\Package\ServiceProvider as PackageServiceProvider;
-use Illuminate\Config\Repository;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\Event;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\EventMessage;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\MessageIdMessage;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\OpenIdMessage;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEvent;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessage;
+use HughCube\Laravel\WeChat\ServiceProvider;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -24,7 +28,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app): array
     {
         return [
-            PackageServiceProvider::class,
+            ServiceProvider::class,
         ];
     }
 
@@ -33,32 +37,45 @@ class TestCase extends OrchestraTestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $this->setupCache($app);
-
-        /** @var Repository $appConfig */
-        $appConfig = $app['config'];
-        $appConfig->set(
-            Package::getFacadeAccessor(),
-            (require dirname(__DIR__).'/config/config.php')
-        );
     }
 
-    /**
-     * @param  Application  $app
-     */
-    protected function setupCache(Application $app)
+    protected function assertMessage(Event $event, $data)
     {
-        /** @var Repository $appConfig */
-        $appConfig = $app['config'];
+        $this->assertSame($event->getFromUserName(), $data['FromUserName']);
+        $this->assertSame($event->getToUserName(), $data['ToUserName']);
+        $this->assertSame($event->getCreatedAt()->getTimestamp(), $data['CreateTime']);
+        $this->assertSame($event->getMessageType(), $data['MsgType']);
 
-        $appConfig->set('cache', [
-            'default' => 'default',
-            'stores' => [
-                'default' => [
-                    'driver' => 'file',
-                    'path' => sprintf('/tmp/test/%s', md5(serialize([__METHOD__]))),
-                ],
-            ],
-        ]);
+        /** 用户行为触发的一定有openid */
+        if ($event instanceof UserEvent) {
+            $this->assertInstanceOf(OpenIdMessage::class, $event);
+        }
+
+        /** 用户发送的消息一定有openid */
+        if ($event instanceof UserMessage) {
+            $this->assertInstanceOf(OpenIdMessage::class, $event);
+        }
+
+        /** 用户发送的消息一定有messageID */
+        if ($event instanceof UserMessage) {
+            $this->assertInstanceOf(MessageIdMessage::class, $event);
+        }
+
+        if ($event instanceof MessageIdMessage) {
+            $this->assertSame($event->getMessageId(), $data['MsgId'] ?? $data['MsgID']);
+        }
+
+        if ($event instanceof OpenIdMessage) {
+            $this->assertSame($event->getFromUserName(), $event->getOpenID());
+        }
+
+        if ($event instanceof OpenIdMessage) {
+            $this->assertSame($event->getFromUserName(), $event->getOpenID());
+        }
+
+        if ($event instanceof EventMessage) {
+            $this->assertSame($event->getEvent(), $data['Event']);
+            $this->assertSame($event->getEventKey(), $data['EventKey'] ?? null);
+        }
     }
 }

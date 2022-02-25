@@ -1,5 +1,5 @@
 {
-    "name": "hughcube/laravel-package",
+    "name": "hughcube/laravel-wechat",
     "description": "",
     "license": "MIT",
     "authors": [
@@ -9,30 +9,28 @@
         }
     ],
     "require": {
-        "php": "7.*|8.*",
-        "illuminate/support": ">=8.0"
+        "php": "8.*",
+        "overtrue/laravel-wechat": "^6.1"
     },
     "require-dev": {
-        "laravel/framework": "*",
-        "laravel/lumen-framework": "*",
-        "squizlabs/php_codesniffer": "*",
         "phpstan/phpstan": "*",
-        "orchestra/testbench": "*"
+        "orchestra/testbench": "*",
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {
-            "HughCube\\Laravel\\Package\\": "src"
+            "HughCube\\Laravel\\WeChat\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HughCube\\Laravel\\Package\\Tests\\": "tests"
+            "HughCube\\Laravel\\WeChat\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "HughCube\\Laravel\\Package\\ServiceProvider"
+                "HughCube\\Laravel\\WeChat\\ServiceProvider"
             ]
         }
     },

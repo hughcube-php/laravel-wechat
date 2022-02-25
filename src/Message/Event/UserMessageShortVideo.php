@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: hugh.li
+ * Date: 2022/2/24
+ * Time: 17:35
+ */
+
+namespace HughCube\Laravel\WeChat\Message\Event;
+
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageShortVideo as Contract;
+
+class UserMessageShortVideo extends Event implements Contract
+{
+    public function getThumbMediaId(): null|string
+    {
+        return $this->getMessage('ThumbMediaId');
+    }
+
+    public function getMediaId(): null|string
+    {
+        return $this->getMessage('MediaId');
+    }
+}
