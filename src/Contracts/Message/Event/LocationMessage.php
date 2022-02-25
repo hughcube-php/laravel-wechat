@@ -15,12 +15,12 @@ interface LocationMessage
      *
      * @return float|null
      */
-    public function getLatitude(): null|float;
+    public function getLatitude(): ?float;
 
     /**
      * 地理位置经度
      *
      * @return float|null
      */
-    public function getLongitude(): null|float;
+    public function getLongitude(): ?float;
 }

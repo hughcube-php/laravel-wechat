@@ -15,12 +15,12 @@ interface UserMessageImage extends UserMessage
      *
      * @return string|null
      */
-    public function getPicUrl(): null|string;
+    public function getPicUrl(): ?string;
 
     /**
      * 图片消息媒体id，可以调用获取临时素材接口拉取数据。
      *
      * @return string|null
      */
-    public function getMediaId(): null|string;
+    public function getMediaId(): ?string;
 }

@@ -14,7 +14,7 @@ interface TemplateMessageEventSendJobFinish extends Event, UserEvent, TemplateMe
      * 发送状态
      * @return string|null
      */
-    public function getStatus(): null|string;
+    public function getStatus(): ?string;
 
     /**
      * 是否发送成功

@@ -14,11 +14,11 @@ interface UserMessageLocation extends UserMessage, LocationMessage
      * 地图缩放大小
      * @return float|null
      */
-    public function getScale(): null|float;
+    public function getScale(): ?float;
 
     /**
      * 地理位置信息
      * @return string|null
      */
-    public function getLabel(): null|string;
+    public function getLabel(): ?string;
 }

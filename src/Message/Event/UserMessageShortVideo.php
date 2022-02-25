@@ -12,12 +12,12 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageShortVideo as Con
 
 class UserMessageShortVideo extends Event implements Contract
 {
-    public function getThumbMediaId(): null|string
+    public function getThumbMediaId(): ?string
     {
         return $this->getMessage('ThumbMediaId');
     }
 
-    public function getMediaId(): null|string
+    public function getMediaId(): ?string
     {
         return $this->getMessage('MediaId');
     }

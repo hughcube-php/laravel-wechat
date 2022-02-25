@@ -14,12 +14,12 @@ interface UserMessageShortVideo extends UserMessage
      * 视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
      * @return string|null
      */
-    public function getThumbMediaId(): null|string;
+    public function getThumbMediaId(): ?string;
 
     /**
      * 视频消息媒体id，可以调用获取临时素材接口拉取数据。
      *
      * @return string|null
      */
-    public function getMediaId(): null|string;
+    public function getMediaId(): ?string;
 }

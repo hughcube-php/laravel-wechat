@@ -14,5 +14,5 @@ interface UserEventLocation extends UserEvent, LocationMessage
      * 地理位置精度
      * @return float|null
      */
-    public function getPrecision(): null|float;
+    public function getPrecision(): ?float;
 }

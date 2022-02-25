@@ -12,7 +12,7 @@ interface ScanMessage
 {
     public function isSubscribe(): bool;
 
-    public function getScene(): null|string|int;
+    public function getScene(): ?string;
 
-    public function getTicket(): null|string;
+    public function getTicket(): ?string;
 }

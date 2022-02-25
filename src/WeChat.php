@@ -34,7 +34,7 @@ class WeChat extends \Overtrue\LaravelWeChat\Facade
      * @return Event|null
      * @throws BindingResolutionException
      */
-    public static function createOfficialAccountEvent(array $message): Event|null
+    public static function createOfficialAccountEvent(array $message): ?Event
     {
         $type = $message['MsgType'] ?? '';
         $event = $message['Event'] ?? '';

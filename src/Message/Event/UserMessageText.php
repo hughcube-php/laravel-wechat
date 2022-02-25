@@ -12,7 +12,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText as Contract;
 
 class UserMessageText extends Event implements Contract
 {
-    public function getContent(): null|string
+    public function getContent(): ?string
     {
         return $this->getMessage('Content');
     }

@@ -18,12 +18,12 @@ class UserEventSubscribeWithScan extends Event implements Contract
         return true;
     }
 
-    public function getTicket(): null|string
+    public function getTicket(): ?string
     {
         return $this->getMessage('Ticket');
     }
 
-    public function getScene(): null|string|int
+    public function getScene(): ?string
     {
         $eventKey = $this->getEventKey();
         return is_string($eventKey) ? Str::afterLast($eventKey, 'qrscene_') : null;

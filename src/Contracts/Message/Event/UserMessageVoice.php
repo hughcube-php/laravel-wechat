@@ -14,14 +14,14 @@ interface UserMessageVoice extends UserMessage
      * 语音格式，如amr，speex等
      * @return string|null
      */
-    public function getFormat(): null|string;
+    public function getFormat(): ?string;
 
     /**
      * 视频消息媒体id，可以调用获取临时素材接口拉取数据。
      *
      * @return string|null
      */
-    public function getMediaId(): null|string;
+    public function getMediaId(): ?string;
 
     /**
      * 请注意，开通语音识别后，用户每次发送语音给公众号时，
@@ -31,5 +31,5 @@ interface UserMessageVoice extends UserMessage
      * 语音识别结果，UTF8编码
      * @return string|null
      */
-    public function getRecognition(): null|string;
+    public function getRecognition(): ?string;
 }

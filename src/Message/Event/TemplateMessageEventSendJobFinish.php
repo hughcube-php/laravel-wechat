@@ -17,7 +17,7 @@ class TemplateMessageEventSendJobFinish extends Event implements Contract
      *
      * @return string|null
      */
-    public function getStatus(): null|string
+    public function getStatus(): ?string
     {
         return $this->getMessage('Status');
     }

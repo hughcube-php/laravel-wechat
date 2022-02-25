@@ -12,17 +12,17 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVoice as Contract
 
 class UserMessageVoice extends Event implements Contract
 {
-    public function getFormat(): null|string
+    public function getFormat(): ?string
     {
         return $this->getMessage('Format');
     }
 
-    public function getMediaId(): null|string
+    public function getMediaId(): ?string
     {
         return $this->getMessage('MediaId');
     }
 
-    public function getRecognition(): null|string
+    public function getRecognition(): ?string
     {
         return $this->getMessage('Recognition');
     }

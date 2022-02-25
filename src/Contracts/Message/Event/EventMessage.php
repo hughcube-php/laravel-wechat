@@ -14,11 +14,11 @@ interface EventMessage
      * 事件类型
      * @return string|null
      */
-    public function getEvent(): null|string;
+    public function getEvent(): ?string;
 
     /**
      * 事件KEY值
      * @return string|null
      */
-    public function getEventKey(): null|string;
+    public function getEventKey(): ?string;
 }

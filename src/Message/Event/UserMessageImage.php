@@ -12,12 +12,12 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageImage as Contract
 
 class UserMessageImage extends Event implements Contract
 {
-    public function getPicUrl(): null|string
+    public function getPicUrl(): ?string
     {
         return $this->getMessage('PicUrl');
     }
 
-    public function getMediaId(): null|string
+    public function getMediaId(): ?string
     {
         return $this->getMessage('MediaId');
     }

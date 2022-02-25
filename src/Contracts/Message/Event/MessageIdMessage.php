@@ -14,5 +14,5 @@ interface MessageIdMessage
      * 消息id，64位整型
      * @return float|int|null
      */
-    public function getMessageId(): null|float|int;
+    public function getMessageId(): ?int;
 }

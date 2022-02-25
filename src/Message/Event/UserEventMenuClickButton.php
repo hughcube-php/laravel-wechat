@@ -12,7 +12,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickButton as 
 
 class UserEventMenuClickButton extends Event implements Contract
 {
-    public function getButtonKey(): null|string
+    public function getButtonKey(): ?string
     {
         return $this->getEventKey();
     }

@@ -14,5 +14,5 @@ interface UserMessageText extends UserMessage
      * 文本消息内容
      * @return string|null
      */
-    public function getContent(): null|string;
+    public function getContent(): ?string;
 }

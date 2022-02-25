@@ -15,7 +15,7 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
     /**
      * @var array
      */
-    protected array $message;
+    protected $message;
 
     /**
      * @param  array  $message
@@ -25,7 +25,11 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
         $this->message = $message;
     }
 
-    public function getMessage(null|int|string $key = null): mixed
+    /**
+     * @param  string|null  $key
+     * @return array|mixed|null
+     */
+    public function getMessage(?string $key = null)
     {
         if (null === $key) {
             return $this->message;
@@ -34,22 +38,22 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
         return $this->message[$key] ?? null;
     }
 
-    public function getToUserName(): null|string
+    public function getToUserName(): ?string
     {
         return $this->getMessage('ToUserName');
     }
 
-    public function getFromUserName(): null|string
+    public function getFromUserName(): ?string
     {
         return $this->getMessage('FromUserName');
     }
 
-    public function getMessageType(): null|string
+    public function getMessageType(): ?string
     {
         return $this->getMessage('MsgType');
     }
 
-    public function getCreatedAt(): null|Carbon
+    public function getCreatedAt(): ?Carbon
     {
         $timestamp = $this->getMessage('CreateTime');
         if (empty($timestamp)) {
@@ -58,22 +62,22 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
         return Carbon::createFromTimestamp($timestamp);
     }
 
-    public function getMessageId(): null|float|int
+    public function getMessageId(): ?int
     {
         return $this->getMessage('MsgId') ?: $this->getMessage('MsgID');
     }
 
-    public function getEvent(): null|string
+    public function getEvent(): ?string
     {
         return $this->getMessage('Event');
     }
 
-    public function getEventKey(): null|string
+    public function getEventKey(): ?string
     {
         return $this->getMessage('EventKey');
     }
 
-    public function getOpenID(): null|string
+    public function getOpenID(): ?string
     {
         return $this->getFromUserName();
     }

@@ -12,17 +12,17 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventLocation as Contrac
 
 class UserEventLocation extends Event implements Contract
 {
-    public function getLatitude(): null|float
+    public function getLatitude(): ?float
     {
         return $this->getMessage('Latitude');
     }
 
-    public function getLongitude(): null|float
+    public function getLongitude(): ?float
     {
         return $this->getMessage('Longitude');
     }
 
-    public function getPrecision(): null|float
+    public function getPrecision(): ?float
     {
         return $this->getMessage('Precision');
     }

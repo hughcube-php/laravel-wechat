@@ -12,12 +12,12 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventScan as Contract;
 
 class UserEventScan extends Event implements Contract
 {
-    public function getTicket(): null|string
+    public function getTicket(): ?string
     {
         return $this->getMessage('Ticket');
     }
 
-    public function getScene(): null|string|int
+    public function getScene(): ?string
     {
         return $this->getMessage('EventKey');
     }

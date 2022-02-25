@@ -16,23 +16,23 @@ interface Event
      * 开发者微信号
      * @return string|null
      */
-    public function getToUserName(): null|string;
+    public function getToUserName(): ?string;
 
     /**
      * 发送方帐号（一个OpenID）
      * @return string|null
      */
-    public function getFromUserName(): null|string;
+    public function getFromUserName(): ?string;
 
     /**
      * 消息创建时间 （整型）
      * @return Carbon|null
      */
-    public function getCreatedAt(): null|Carbon;
+    public function getCreatedAt(): ?Carbon;
 
     /**
      * 消息类型
      * @return string|null
      */
-    public function getMessageType(): null|string;
+    public function getMessageType(): ?string;
 }

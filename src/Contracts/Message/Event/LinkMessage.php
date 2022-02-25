@@ -15,5 +15,5 @@ interface LinkMessage
      *
      * @return string|null
      */
-    public function getUrl(): null|string;
+    public function getUrl(): ?string;
 }

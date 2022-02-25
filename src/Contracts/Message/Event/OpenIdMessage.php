@@ -10,5 +10,5 @@ namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
 interface OpenIdMessage
 {
-    public function getOpenID(): null|string;
+    public function getOpenID(): ?string;
 }
