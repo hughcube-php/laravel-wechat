@@ -12,7 +12,7 @@ interface MessageIdMessage
 {
     /**
      * 消息id，64位整型
-     * @return float|int|null
+     * @return int|null
      */
     public function getMessageId(): ?int;
 }
