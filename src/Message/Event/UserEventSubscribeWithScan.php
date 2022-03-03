@@ -8,8 +8,8 @@
 
 namespace HughCube\Laravel\WeChat\Message\Event;
 
-use Illuminate\Support\Str;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventSubscribeWithScan as Contract;
+use HughCube\Laravel\WeChat\Models\QrScene;
 
 class UserEventSubscribeWithScan extends Event implements Contract
 {
@@ -23,10 +23,9 @@ class UserEventSubscribeWithScan extends Event implements Contract
         return $this->getMessage('Ticket');
     }
 
-    public function getScene(): ?string
+    public function getScene(): ?QrScene
     {
-        $eventKey = $this->getEventKey();
-        return is_string($eventKey) ? Str::afterLast($eventKey, 'qrscene_') : null;
+        return QrScene::create($this->getMessage('EventKey'));
     }
 
     public function isSubscribe(): bool

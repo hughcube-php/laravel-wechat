@@ -69,7 +69,7 @@ class UserEventScanTest extends TestCase
         $this->assertInstanceOf(OpenIdMessage::class, $message);
 
         $this->assertMessage($message, $data);
-        $this->assertSame($message->getEventKey(), $message->getScene());
+        $this->assertSame($message->getEventKey(), $message->getScene()->getValue());
         $this->assertSame($message->getTicket(), strval($data['Ticket']));
     }
 }

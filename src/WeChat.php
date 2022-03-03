@@ -8,6 +8,7 @@
 
 namespace HughCube\Laravel\WeChat;
 
+use App\Enum\WeChatQrSceneType;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\Event;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\TemplateMessageEventSendJobFinish;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventLocation;

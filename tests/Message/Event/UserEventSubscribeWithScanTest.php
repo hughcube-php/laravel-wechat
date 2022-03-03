@@ -71,6 +71,6 @@ class UserEventSubscribeWithScanTest extends TestCase
         $this->assertMessage($message, $data);
         $this->assertTrue($message->isScan());
         $this->assertSame($message->getTicket(), $data['Ticket']);
-        $this->assertSame($message->getScene(), Str::afterLast($data['EventKey'], 'qrscene_'));
+        $this->assertSame($message->getScene()->getValue(), Str::afterLast($data['EventKey'], 'qrscene_'));
     }
 }

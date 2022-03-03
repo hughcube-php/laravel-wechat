@@ -8,11 +8,13 @@
 
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
+use HughCube\Laravel\WeChat\Models\QrScene;
+
 interface ScanMessage
 {
     public function isSubscribe(): bool;
 
-    public function getScene(): ?string;
+    public function getScene(): ?QrScene;
 
     public function getTicket(): ?string;
 }

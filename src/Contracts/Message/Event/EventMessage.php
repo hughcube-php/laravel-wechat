@@ -18,7 +18,7 @@ interface EventMessage
 
     /**
      * 事件KEY值
-     * @return string|null
+     * @return string|int|null
      */
-    public function getEventKey(): ?string;
+    public function getEventKey();
 }

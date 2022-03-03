@@ -41,5 +41,10 @@
         "fix-style": "phpcbf -p --standard=PSR2 src/ -v"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "easywechat-composer/easywechat-composer": true
+        }
+    }
 }

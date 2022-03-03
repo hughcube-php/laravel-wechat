@@ -72,7 +72,7 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
         return $this->getMessage('Event');
     }
 
-    public function getEventKey(): ?string
+    public function getEventKey()
     {
         return $this->getMessage('EventKey');
     }
