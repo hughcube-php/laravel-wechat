@@ -9,7 +9,7 @@
 namespace HughCube\Laravel\WeChat\Message\Event;
 
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventSubscribeWithScan as Contract;
-use HughCube\Laravel\WeChat\Models\QrScene;
+use HughCube\Laravel\WeChat\Model\QrScene;
 
 class UserEventSubscribeWithScan extends Event implements Contract
 {

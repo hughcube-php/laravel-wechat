@@ -6,7 +6,7 @@
  * Time: 18:32
  */
 
-namespace HughCube\Laravel\WeChat\Models;
+namespace HughCube\Laravel\WeChat\Model;
 
 use Exception;
 use Illuminate\Support\Str;
