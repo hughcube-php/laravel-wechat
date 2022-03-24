@@ -14,6 +14,6 @@ class UserEventMenuClickView extends Event implements Contract
 {
     public function getUrl(): ?string
     {
-        return $this->getMessage('EventKey');
+        return $this->getEventKey();
     }
 }

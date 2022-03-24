@@ -8,7 +8,7 @@
 
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
-interface UserEventMenuClickButton extends UserEvent
+interface UserEventMenuClickButton extends UserEvent, UserEventMenu
 {
     /**
      * 事件KEY值，与自定义菜单接口中KEY值对应

@@ -8,6 +8,9 @@
 
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
-interface UserEventMenuClickView extends UserEvent, LinkMessage, UserEventMenu
+interface UserEventMenuClickMiniProgram extends UserEvent, UserEventMenu
 {
+    public function getPage(): string;
+
+    public function getMenuId(): string;
 }

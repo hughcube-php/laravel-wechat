@@ -12,6 +12,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\Event;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\LinkMessage;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\OpenIdMessage;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEvent;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenu;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickView;
 use HughCube\Laravel\WeChat\Tests\TestCase;
 use HughCube\Laravel\WeChat\WeChat;
@@ -65,6 +66,7 @@ class UserEventMenuClickViewTest extends TestCase
 
         $this->assertInstanceOf(OpenIdMessage::class, $message);
         $this->assertInstanceOf(LinkMessage::class, $message);
+        $this->assertInstanceOf(UserEventMenu::class, $message);
 
         $this->assertMessage($message, $data);
         $this->assertSame($message->getEventKey(), $data['EventKey']);

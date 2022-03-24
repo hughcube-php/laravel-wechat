@@ -20,7 +20,7 @@ class UserEventScan extends Event implements Contract
 
     public function getScene(): ?QrScene
     {
-        return QrScene::create($this->getMessage('EventKey'));
+        return QrScene::create($this->getEventKey());
     }
 
     public function isSubscribe(): bool

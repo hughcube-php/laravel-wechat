@@ -12,6 +12,7 @@ use HughCube\Laravel\WeChat\Contracts\Message;
 use HughCube\Laravel\WeChat\Message\Event\TemplateMessageEventSendJobFinish;
 use HughCube\Laravel\WeChat\Message\Event\UserEventLocation;
 use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickButton;
+use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickMiniProgram;
 use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickView;
 use HughCube\Laravel\WeChat\Message\Event\UserEventScan;
 use HughCube\Laravel\WeChat\Message\Event\UserEventSubscribe;
@@ -54,6 +55,7 @@ class ServiceProvider extends IlluminateServiceProvider
             Message\Event\UserEventLocation::class => UserEventLocation::class,
             Message\Event\UserEventMenuClickButton::class => UserEventMenuClickButton::class,
             Message\Event\UserEventMenuClickView::class => UserEventMenuClickView::class,
+            Message\Event\UserEventMenuClickMiniProgram::class => UserEventMenuClickMiniProgram::class,
             Message\Event\UserEventScan::class => UserEventScan::class,
             Message\Event\UserEventSubscribe::class => UserEventSubscribe::class,
             Message\Event\UserEventSubscribeWithScan::class => UserEventSubscribeWithScan::class,

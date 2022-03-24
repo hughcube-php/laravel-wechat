@@ -8,7 +8,6 @@
 
 namespace HughCube\Laravel\WeChat;
 
-use App\Enum\WeChatQrSceneType;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\Event;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\TemplateMessageEventSendJobFinish;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventLocation;
@@ -25,6 +24,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageShortVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVoice;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickMiniProgram;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
 
@@ -75,6 +75,8 @@ class WeChat extends \Overtrue\LaravelWeChat\Facade
             return static::$app->make(UserEventMenuClickButton::class, ['message' => $message]);
         } elseif ('event' === $type && $event === 'VIEW') {
             return static::$app->make(UserEventMenuClickView::class, ['message' => $message]);
+        } elseif ('event' === $type && $event === 'view_miniprogram') {
+            return static::$app->make(UserEventMenuClickMiniProgram::class, ['message' => $message]);
         }
 
         /** 模版消息 */
