@@ -12,6 +12,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\Event;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\TemplateMessageEventSendJobFinish;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventLocation;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickButton;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickMiniProgram;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickView;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventScan;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventSubscribe;
@@ -24,11 +25,22 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageShortVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVoice;
-use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickMiniProgram;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
+use Overtrue\LaravelWeChat\EasyWeChat;
+use Overtrue\LaravelWeChat\Facade as EasyWeChatFacade;
 
-class WeChat extends \Overtrue\LaravelWeChat\Facade
+if (class_exists(EasyWeChat::class)) {
+    class Facade extends EasyWeChat
+    {
+    }
+} else {
+    class Facade extends EasyWeChatFacade
+    {
+    }
+}
+
+class WeChat extends Facade
 {
     /**
      * @param  array  $message

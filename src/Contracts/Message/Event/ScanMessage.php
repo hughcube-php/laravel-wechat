@@ -10,7 +10,7 @@ namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
 use HughCube\Laravel\WeChat\Model\QrScene;
 
-interface ScanMessage
+interface ScanMessage extends OpenIdMessage
 {
     public function isSubscribe(): bool;
 

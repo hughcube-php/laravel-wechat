@@ -8,7 +8,7 @@
 
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
-interface EventMessage
+interface EventMessage extends Event
 {
     /**
      * 事件类型
