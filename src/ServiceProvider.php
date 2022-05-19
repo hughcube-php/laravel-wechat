@@ -9,6 +9,7 @@
 namespace HughCube\Laravel\WeChat;
 
 use HughCube\Laravel\WeChat\Contracts\Message;
+use HughCube\Laravel\WeChat\Message\Event\Event;
 use HughCube\Laravel\WeChat\Message\Event\TemplateMessageEventSendJobFinish;
 use HughCube\Laravel\WeChat\Message\Event\UserEventLocation;
 use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickButton;
@@ -63,6 +64,8 @@ class ServiceProvider extends IlluminateServiceProvider
 
             /** 模版消息 */
             Message\Event\TemplateMessageEventSendJobFinish::class => TemplateMessageEventSendJobFinish::class,
+
+            Message\Event\Event::class => Event::class,
         ];
     }
 }

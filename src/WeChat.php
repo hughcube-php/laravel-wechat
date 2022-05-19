@@ -27,27 +27,16 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVoice;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
-use Overtrue\LaravelWeChat\EasyWeChat;
-use Overtrue\LaravelWeChat\Facade as EasyWeChatFacade;
-
-if (class_exists(EasyWeChat::class)) {
-    class Facade extends EasyWeChat
-    {
-    }
-} else {
-    class Facade extends EasyWeChatFacade
-    {
-    }
-}
 
 class WeChat extends Facade
 {
     /**
      * @param  array  $message
-     * @return Event|null
-     * @throws BindingResolutionException
+     * @return Event
+     * @throws
+     * @phpstan-ignore-next-line
      */
-    public static function createOfficialAccountEvent(array $message): ?Event
+    public static function createOfficialAccountEvent(array $message): Event
     {
         $type = $message['MsgType'] ?? '';
         $event = $message['Event'] ?? '';
@@ -96,6 +85,6 @@ class WeChat extends Facade
             return static::$app->make(TemplateMessageEventSendJobFinish::class, ['message' => $message]);
         }
 
-        return null;
+        return static::$app->make(Event::class, ['message' => $message]);
     }
 }
