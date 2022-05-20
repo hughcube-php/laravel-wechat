@@ -9,6 +9,7 @@
 namespace HughCube\Laravel\WeChat;
 
 use Overtrue\LaravelWeChat\EasyWeChat;
+use Overtrue\LaravelWeChat\Facade as EasyWeChatFacade;
 
 if (class_exists(EasyWeChat::class)) {
     class Facade extends EasyWeChat
