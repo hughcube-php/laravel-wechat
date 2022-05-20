@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=7.2|8.*",
-        "overtrue/laravel-wechat": "^5.0|^6.0"
+        "overtrue/laravel-wechat": "^5.0|^6.0|^7.0"
     },
     "require-dev": {
         "phpstan/phpstan": "*",
