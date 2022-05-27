@@ -25,9 +25,15 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageShortVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVideo;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVoice;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
+use Overtrue\LaravelWeChat\EasyWeChat;
+use Overtrue\LaravelWeChat\Facade as EasyWeChatFacade;
 
+/**
+ * @mixin EasyWeChat
+ * @mixin EasyWeChatFacade
+ * @phpstan-ignore-next-line
+ */
 class WeChat extends Facade
 {
     /**

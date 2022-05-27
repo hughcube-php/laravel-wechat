@@ -20,11 +20,11 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      #- name: Run check-style
-      #  run: composer run-script check-style
+      - name: Run check-style
+        run: composer run-script check-style
 
-      #- name: Run php-cs-fxier
-      #  run: composer run-script fix-style
+      - name: Run php-cs-fxier
+        run: composer run-script fix-style
 
-      #- name: Run phpstan
-      #  run: composer run-script phpstan
+      - name: Run phpstan
+        run: composer run-script phpstan
