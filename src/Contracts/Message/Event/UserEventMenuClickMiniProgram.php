@@ -13,4 +13,8 @@ interface UserEventMenuClickMiniProgram extends UserEvent, UserEventMenu
     public function getPage(): string;
 
     public function getMenuId(): string;
+
+    public function isMenuId(...$ids): bool;
+
+    public function isPage(string $pattern): bool;
 }

@@ -14,6 +14,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessage;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageLink;
 use HughCube\Laravel\WeChat\Tests\TestCase;
 use HughCube\Laravel\WeChat\WeChat;
+use HughCube\PUrl\HUrl;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
 
@@ -33,7 +34,7 @@ class UserMessageLinkTest extends TestCase
                     'MsgType' => 'link',
                     'Title' => Str::random(),
                     'Description' => Str::random(),
-                    'Url' => Str::random(),
+                    'Url' => sprintf("https://%s.com", Str::random()),
                     'MsgId' => crc32(Str::random()),
                 ]
             ],
@@ -45,7 +46,7 @@ class UserMessageLinkTest extends TestCase
                     'MsgType' => 'link',
                     'Title' => Str::random(),
                     'Description' => Str::random(),
-                    'Url' => Str::random(),
+                    'Url' => sprintf("https://%s.com", Str::random()),
                     'MsgId' => crc32(Str::random()),
                 ]
             ]
@@ -55,7 +56,6 @@ class UserMessageLinkTest extends TestCase
     /**
      * @dataProvider messageDataProvider
      * @return void
-     * @throws BindingResolutionException
      */
     public function testMessage($data)
     {
@@ -71,6 +71,6 @@ class UserMessageLinkTest extends TestCase
         $this->assertMessage($message, $data);
         $this->assertSame($message->getTitle(), $data['Title']);
         $this->assertSame($message->getDescription(), $data['Description']);
-        $this->assertSame($message->getUrl(), $data['Url']);
+        $this->assertSame($message->getUrl()->toString(), $data['Url']);
     }
 }

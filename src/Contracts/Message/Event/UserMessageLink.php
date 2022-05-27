@@ -23,11 +23,4 @@ interface UserMessageLink extends UserMessage, LinkMessage
      * @return string|null
      */
     public function getDescription(): ?string;
-
-    /**
-     * 消息链接
-     *
-     * @return string|null
-     */
-    public function getUrl(): ?string;
 }

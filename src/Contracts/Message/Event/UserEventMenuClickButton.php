@@ -15,4 +15,6 @@ interface UserEventMenuClickButton extends UserEvent, UserEventMenu
      * @return string|null
      */
     public function getButtonKey(): ?string;
+
+    public function isKey(...$keys): bool;
 }

@@ -16,6 +16,7 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenu;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickView;
 use HughCube\Laravel\WeChat\Tests\TestCase;
 use HughCube\Laravel\WeChat\WeChat;
+use HughCube\PUrl\HUrl;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
 
@@ -34,7 +35,7 @@ class UserEventMenuClickViewTest extends TestCase
                     'CreateTime' => time(),
                     'MsgType' => 'event',
                     'Event' => 'VIEW',
-                    'EventKey' => Str::random(),
+                    'EventKey' => sprintf("https://%s.com", Str::random()),
                 ]
             ],
             [
@@ -44,7 +45,7 @@ class UserEventMenuClickViewTest extends TestCase
                     'CreateTime' => time(),
                     'MsgType' => 'event',
                     'Event' => 'VIEW',
-                    'EventKey' => Str::random(),
+                    'EventKey' => sprintf("https://%s.com", Str::random()),
                 ]
             ]
         ];
@@ -53,7 +54,6 @@ class UserEventMenuClickViewTest extends TestCase
     /**
      * @dataProvider messageDataProvider
      * @return void
-     * @throws BindingResolutionException
      */
     public function testMessage($data)
     {
@@ -70,6 +70,6 @@ class UserEventMenuClickViewTest extends TestCase
 
         $this->assertMessage($message, $data);
         $this->assertSame($message->getEventKey(), $data['EventKey']);
-        $this->assertSame($message->getEventKey(), $message->getUrl());
+        $this->assertSame($message->getEventKey(), $message->getUrl()->toString());
     }
 }

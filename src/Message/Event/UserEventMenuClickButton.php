@@ -16,4 +16,14 @@ class UserEventMenuClickButton extends Event implements Contract
     {
         return $this->getEventKey();
     }
+
+    public function isKey(...$keys): bool
+    {
+        foreach ($keys as $key) {
+            if ($key == $this->getButtonKey()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
