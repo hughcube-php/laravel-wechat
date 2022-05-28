@@ -9,7 +9,7 @@
 namespace HughCube\Laravel\WeChat\Message\Event;
 
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageLink as Contract;
-use HughCube\PUrl\Url;
+use HughCube\PUrl\HUrl;
 
 class UserMessageLink extends Event implements Contract
 {
@@ -23,8 +23,8 @@ class UserMessageLink extends Event implements Contract
         return $this->getMessage('Description');
     }
 
-    public function getUrl(): ?Url
+    public function getUrl(): ?HUrl
     {
-        return Url::parse($this->getMessage('Url'));
+        return HUrl::parse($this->getMessage('Url'));
     }
 }

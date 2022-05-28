@@ -9,7 +9,7 @@
 namespace HughCube\Laravel\WeChat\Message\Event;
 
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText as Contract;
-use HughCube\PUrl\Url;
+use HughCube\PUrl\HUrl;
 use Illuminate\Support\Str;
 
 class UserMessageText extends Event implements Contract
@@ -36,8 +36,8 @@ class UserMessageText extends Event implements Contract
         return Str::contains($this->getContent($trim), $needles, $ignoreCase);
     }
 
-    public function getUrl(): ?Url
+    public function getUrl(): ?HUrl
     {
-        return Url::parse($this->getContent());
+        return HUrl::parse($this->getContent());
     }
 }

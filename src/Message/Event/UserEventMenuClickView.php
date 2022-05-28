@@ -9,12 +9,12 @@
 namespace HughCube\Laravel\WeChat\Message\Event;
 
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickView as Contract;
-use HughCube\PUrl\Url;
+use HughCube\PUrl\HUrl;
 
 class UserEventMenuClickView extends Event implements Contract
 {
-    public function getUrl(): ?Url
+    public function getUrl(): ?HUrl
     {
-        return Url::parse($this->getEventKey());
+        return HUrl::parse($this->getEventKey());
     }
 }

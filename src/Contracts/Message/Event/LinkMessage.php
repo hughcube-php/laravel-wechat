@@ -8,9 +8,9 @@
 
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
-use HughCube\PUrl\Url;
+use HughCube\PUrl\HUrl;
 
 interface LinkMessage
 {
-    public function getUrl(): ?Url;
+    public function getUrl(): ?HUrl;
 }

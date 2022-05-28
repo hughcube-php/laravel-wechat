@@ -8,8 +8,6 @@
 
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
-use HughCube\PUrl\Url;
-
 interface UserMessageText extends UserMessage, LinkMessage
 {
     /**
