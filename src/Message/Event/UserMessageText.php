@@ -10,6 +10,7 @@ namespace HughCube\Laravel\WeChat\Message\Event;
 
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText as Contract;
 use HughCube\PUrl\HUrl;
+use HughCube\PUrl\Url;
 use Illuminate\Support\Str;
 
 class UserMessageText extends Event implements Contract
