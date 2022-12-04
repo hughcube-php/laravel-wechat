@@ -14,7 +14,6 @@ use HughCube\Laravel\WeChat\Contracts\Message\Event\MessageIdMessage;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\OpenIdMessage;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEvent;
 use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessage;
-use HughCube\Laravel\WeChat\ServiceProvider;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
@@ -27,9 +26,7 @@ class TestCase extends OrchestraTestCase
      */
     protected function getPackageProviders($app): array
     {
-        return [
-            ServiceProvider::class,
-        ];
+        return [];
     }
 
     /**

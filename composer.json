@@ -30,9 +30,7 @@
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "HughCube\\Laravel\\WeChat\\ServiceProvider"
-            ]
+            "providers": []
         }
     },
     "scripts": {
