@@ -8,23 +8,23 @@
 
 namespace HughCube\Laravel\WeChat;
 
-use HughCube\Laravel\WeChat\Message\Event\Event;
-use HughCube\Laravel\WeChat\Message\Event\TemplateMessageEventSendJobFinish;
-use HughCube\Laravel\WeChat\Message\Event\UserEventLocation;
-use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickButton;
-use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickMiniProgram;
-use HughCube\Laravel\WeChat\Message\Event\UserEventMenuClickView;
-use HughCube\Laravel\WeChat\Message\Event\UserEventScan;
-use HughCube\Laravel\WeChat\Message\Event\UserEventSubscribe;
-use HughCube\Laravel\WeChat\Message\Event\UserEventSubscribeWithScan;
-use HughCube\Laravel\WeChat\Message\Event\UserEventUnsubscribe;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageImage;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageLink;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageLocation;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageShortVideo;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageText;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageVideo;
-use HughCube\Laravel\WeChat\Message\Event\UserMessageVoice;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\Event;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\TemplateMessageEventSendJobFinish;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventLocation;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickButton;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickMiniProgram;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventMenuClickView;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventScan;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventSubscribe;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventSubscribeWithScan;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserEventUnsubscribe;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageImage;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageLink;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageLocation;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageShortVideo;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageText;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVideo;
+use HughCube\Laravel\WeChat\Contracts\Message\Event\UserMessageVoice;
 use Illuminate\Support\Str;
 use Overtrue\LaravelWeChat\EasyWeChat;
 use Overtrue\LaravelWeChat\Facade as EasyWeChatFacade;
@@ -50,47 +50,55 @@ class WeChat extends Facade
 
         /** 用户发送的消息 */
         if ('text' === $type) {
-            return static::$app->make(UserMessageText::class, ['message' => $message]);
+            $abstract = UserMessageText::class;
         } elseif ('image' === $type) {
-            return static::$app->make(UserMessageImage::class, ['message' => $message]);
+            $abstract = UserMessageImage::class;
         } elseif ('voice' === $type) {
-            return static::$app->make(UserMessageVoice::class, ['message' => $message]);
+            $abstract = UserMessageVoice::class;
         } elseif ('video' === $type) {
-            return static::$app->make(UserMessageVideo::class, ['message' => $message]);
+            $abstract = UserMessageVideo::class;
         } elseif ('shortvideo' === $type) {
-            return static::$app->make(UserMessageShortVideo::class, ['message' => $message]);
+            $abstract = UserMessageShortVideo::class;
         } elseif ('location' === $type) {
-            return static::$app->make(UserMessageLocation::class, ['message' => $message]);
+            $abstract = UserMessageLocation::class;
         } elseif ('link' === $type) {
-            return static::$app->make(UserMessageLink::class, ['message' => $message]);
-        }
-
-        /** 用户行为事件 */
-        if ('event' === $type && $event === 'subscribe' && Str::startsWith($eventKey, 'qrscene_')) {
-            return static::$app->make(UserEventSubscribeWithScan::class, ['message' => $message]);
+            $abstract = UserMessageLink::class;
+        } elseif ('event' === $type && $event === 'subscribe' && Str::startsWith($eventKey, 'qrscene_')) {
+            $abstract = UserEventSubscribeWithScan::class;
         } elseif ('event' === $type && $event === 'subscribe') {
-            return static::$app->make(UserEventSubscribe::class, ['message' => $message]);
+            $abstract = UserEventSubscribe::class;
         } elseif ('event' === $type && $event === 'unsubscribe') {
-            return static::$app->make(UserEventUnsubscribe::class, ['message' => $message]);
+            $abstract = UserEventUnsubscribe::class;
         } elseif ('event' === $type && $event === 'SCAN') {
-            return static::$app->make(UserEventScan::class, ['message' => $message]);
+            $abstract = UserEventScan::class;
         } elseif ('event' === $type && $event === 'unsubscribe') {
-            return static::$app->make(UserEventUnsubscribe::class, ['message' => $message]);
+            $abstract = UserEventUnsubscribe::class;
         } elseif ('event' === $type && $event === 'LOCATION') {
-            return static::$app->make(UserEventLocation::class, ['message' => $message]);
+            $abstract = UserEventLocation::class;
         } elseif ('event' === $type && $event === 'CLICK') {
-            return static::$app->make(UserEventMenuClickButton::class, ['message' => $message]);
+            $abstract = UserEventMenuClickButton::class;
         } elseif ('event' === $type && $event === 'VIEW') {
-            return static::$app->make(UserEventMenuClickView::class, ['message' => $message]);
+            $abstract = UserEventMenuClickView::class;
         } elseif ('event' === $type && $event === 'view_miniprogram') {
-            return static::$app->make(UserEventMenuClickMiniProgram::class, ['message' => $message]);
+            $abstract = UserEventMenuClickMiniProgram::class;
+        } elseif ('event' === $type && $event === 'TEMPLATESENDJOBFINISH') {
+            $abstract = TemplateMessageEventSendJobFinish::class;
+        } else {
+            $abstract = Event::class;
         }
 
-        /** 模版消息 */
-        if ('event' === $type && $event === 'TEMPLATESENDJOBFINISH') {
-            return static::$app->make(TemplateMessageEventSendJobFinish::class, ['message' => $message]);
+        /** 已经绑定实现类 */
+        if (static::$app->bound($abstract)) {
+            return static::$app->make($abstract, ['message' => $message]);
         }
 
-        return static::$app->make(Event::class, ['message' => $message]);
+        /** 尝试使用默认实现类 */
+        $concrete = strtr($abstract, ['\Contracts' => '']);
+        if (class_exists($concrete)) {
+            return static::$app->make($concrete, ['message' => $message]);
+        }
+
+        /** 兜底使用基类 */
+        return static::$app->make(Message\Event\Event::class, ['message' => $message]);
     }
 }
