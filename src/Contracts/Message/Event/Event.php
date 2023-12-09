@@ -9,7 +9,7 @@
 namespace HughCube\Laravel\WeChat\Contracts\Message\Event;
 
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
+use Illuminate\Cache\Repository;
 
 interface Event
 {
@@ -37,8 +37,5 @@ interface Event
      */
     public function getMessageType(): ?string;
 
-    /**
-     * @return Collection
-     */
-    public function getStore(): Collection;
+    public function getStore(): Repository;
 }

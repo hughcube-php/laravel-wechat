@@ -9,7 +9,8 @@
 namespace HughCube\Laravel\WeChat\Message\Event;
 
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
+use Illuminate\Cache\ArrayStore;
+use Illuminate\Cache\Repository;
 
 class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
 {
@@ -19,7 +20,7 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
     protected $message;
 
     /**
-     * @var Collection
+     * @var Repository
      */
     protected $store = null;
 
@@ -88,10 +89,10 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
         return $this->getFromUserName();
     }
 
-    public function getStore(): Collection
+    public function getStore(): Repository
     {
-        if (!$this->store instanceof Collection) {
-            $this->store = Collection::empty();
+        if (null === $this->store) {
+            $this->store = new Repository(new ArrayStore());
         }
         return $this->store;
     }
