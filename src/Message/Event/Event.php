@@ -9,6 +9,7 @@
 namespace HughCube\Laravel\WeChat\Message\Event;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
 {
@@ -16,6 +17,11 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
      * @var array
      */
     protected $message;
+
+    /**
+     * @var Collection
+     */
+    protected $store = null;
 
     /**
      * @param  array  $message
@@ -80,5 +86,13 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
     public function getOpenID(): ?string
     {
         return $this->getFromUserName();
+    }
+
+    public function getStore(): Collection
+    {
+        if (!$this->store instanceof Collection) {
+            $this->store = Collection::empty();
+        }
+        return $this->store;
     }
 }

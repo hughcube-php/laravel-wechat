@@ -21,7 +21,7 @@ class UserMessageVoiceTest extends TestCase
     /**
      * @return array
      */
-    public function messageDataProvider(): array
+    public static function messageDataProvider(): array
     {
         return [
             [
@@ -54,7 +54,6 @@ class UserMessageVoiceTest extends TestCase
     /**
      * @dataProvider messageDataProvider
      * @return void
-     * @throws BindingResolutionException
      */
     public function testMessage($data)
     {

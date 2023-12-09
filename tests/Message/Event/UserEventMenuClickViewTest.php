@@ -25,7 +25,7 @@ class UserEventMenuClickViewTest extends TestCase
     /**
      * @return array
      */
-    public function messageDataProvider(): array
+    public static function messageDataProvider(): array
     {
         return [
             [

@@ -21,7 +21,7 @@ class UserEventUnsubscribeTest extends TestCase
     /**
      * @return array
      */
-    public function messageDataProvider(): array
+    public static function messageDataProvider(): array
     {
         return [
             [
@@ -48,7 +48,6 @@ class UserEventUnsubscribeTest extends TestCase
     /**
      * @dataProvider messageDataProvider
      * @return void
-     * @throws BindingResolutionException
      */
     public function testMessage($data)
     {
