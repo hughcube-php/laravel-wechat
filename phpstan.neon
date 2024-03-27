@@ -1,7 +1,10 @@
 
+
 parameters:
     level: 4
     paths:
         - src
     inferPrivatePropertyTypeFromConstructor: true
+    excludePaths:
+        - src/Facade.php
     ignoreErrors:

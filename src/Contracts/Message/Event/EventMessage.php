@@ -15,10 +15,4 @@ interface EventMessage extends Event
      * @return string|null
      */
     public function getEvent(): ?string;
-
-    /**
-     * 事件KEY值
-     * @return string|int|null
-     */
-    public function getEventKey();
 }
