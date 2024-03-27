@@ -33,6 +33,8 @@ interface Event
      */
     public function getMessageType(): ?string;
 
+    public function ifInstanceof(string $class, $callback = null, $default = null);
+
     /**
      * 文本消息内容
      */

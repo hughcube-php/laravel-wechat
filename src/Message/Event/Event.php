@@ -68,6 +68,15 @@ class Event implements \HughCube\Laravel\WeChat\Contracts\Message\Event\Event
         return $this->getMessage('MsgType');
     }
 
+    public function ifInstanceof(string $class, $callback = null, $default = null)
+    {
+        if ($this instanceof $class) {
+            return is_callable($callback) ? $callback($this) : true;
+        } else {
+            return is_callable($default) ? $default($this) : null;
+        }
+    }
+
     public function getCreatedAt(): ?Carbon
     {
         $timestamp = $this->getMessage('CreateTime');
